@@ -1,7 +1,9 @@
-const btn = document.querySelector("button");
+const btn = document.getElementById("new-para");
 const container = document.querySelector(".container");
 let para = document.getElementById("para");
-const form = document.getElementById("myForm");
+const copy = document.getElementById("copy")
+const copied = document.getElementById("copied");
+// const form = document.getElementById("myForm");
 
 let paragraphs = [
     "hello",
@@ -10,20 +12,18 @@ let paragraphs = [
     "davids a cunt"
 ];
 
-function emailSubmit() {
-    let copyText = document.getElementById("myInput");
 
-    copyText.select();
-
-    navigator.clipboard.writeText(copyText.value)
-};
-
-
-btn.addEventListener("click", () => {
+btn.addEventListener("click", function (e) {
+    e.preventDefault;
     let para = document.getElementById("para");
-
     let i = Math.floor(Math.random() * paragraphs.length);
     para.textContent = paragraphs[i];
+    if (para.innerText != "") {
+        navigator.clipboard.writeText(para.textContent)
+        btn.style.display = "none";
+    }
+    copied.classList.add("show");
 
-})
 
+
+});
